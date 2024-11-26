@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
-            $table->string('name');
-            $table->string('country');
-            $table->float('lat');
-            $table->float('lon');
+        Schema::create('user_city_selections', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->bigInteger('city_id')->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('user_city_selections');
     }
 };

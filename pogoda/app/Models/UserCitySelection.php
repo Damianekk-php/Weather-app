@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Weather extends Model
+class UserCitySelection extends Model
 {
-    protected $fillable = ['city_id', 'temperature', 'humidity', 'description'];
+    protected $fillable = ['user_id', 'city_id'];
 
     public function city()
     {
