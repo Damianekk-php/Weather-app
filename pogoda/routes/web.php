@@ -12,7 +12,7 @@ Route::get('/', function () {
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
-Route::get('/weather/{id}', [WeatherController::class, 'show'])->name('weather.show');
+Route::get('/weather/{city_id}', [WeatherController::class, 'show'])->name('weather.show');
 
 Auth::routes();
 

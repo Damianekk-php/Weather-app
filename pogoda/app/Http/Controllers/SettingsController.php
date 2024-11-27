@@ -15,6 +15,7 @@ class SettingsController extends Controller
 
         // Pobieramy ustawienia
         $setting = Setting::first();
+
         // Pobieramy zapisane city_ids
         $cityIds = $setting ? $setting->city_ids : [];
 
@@ -24,27 +25,36 @@ class SettingsController extends Controller
 
     public function update(Request $request)
     {
+        // Walidacja wejścia
         $request->validate([
-            'city_ids' => 'array|max:10',
-            'city_ids.*' => 'exists:cities,id',
+            'city_ids' => 'required|array|max:10', // Maksymalnie 10 miast
+            'city_ids.*' => 'exists:cities,id', // Każde miasto musi istnieć w bazie
         ]);
 
+        // Pobieramy aktualne ustawienia
         $setting = Setting::first();
+
+        // Jeżeli nie ma ustawienia, tworzymy nowe
         if (!$setting) {
             $setting = Setting::create();
         }
 
+        // Pobieramy aktualnie zapisane id miast
         $existingCityIds = $setting->city_ids ?? [];
 
+        // Łączymy istniejące i nowe miasta
+        $newCityIds = $request->input('city_ids');
 
-        $newCityIds = array_merge($existingCityIds, $request->input('city_ids'));
-
+        // Zastosowujemy array_unique, aby nie było duplikatów, oraz ograniczamy do 10 miast
         $newCityIds = array_unique($newCityIds);
         $newCityIds = array_slice($newCityIds, 0, 10);
 
+        // Zapisujemy zaktualizowaną listę miast
         $setting->city_ids = $newCityIds;
         $setting->save();
 
+        // Przekierowanie z komunikatem o sukcesie
         return redirect()->route('settings.index')->with('success', 'Ustawienia zostały zapisane.');
     }
 }
+
