@@ -34,6 +34,8 @@
                         {{ session('success') }}
                     </div>
                 @endif
+
+                <a href="{{ route('weather.index') }}" class="btn btn-secondary btn-lg mt-3">Przejdź do Pogody</a>
             </div>
         </div>
     </div>
