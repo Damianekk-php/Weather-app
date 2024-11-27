@@ -1,7 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/pogoda/tests/Unit" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/carbonphp/carbon-doctrine-types" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/pail" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/pint" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/sail" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/league/commonmark" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nunomaduro/collision" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/css-selector" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/pogoda/vendor/webmozart/assert" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
