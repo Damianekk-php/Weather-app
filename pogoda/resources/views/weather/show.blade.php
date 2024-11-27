@@ -1,34 +1,156 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
-        <h1 class="mb-4">Szczegóły Pogody - {{ $weather->city_name }}</h1>
+    <div class="container">
+        <h1>Szczegóły pogody dla: {{ $currentWeather->city_name }}</h1>
 
-        <div class="card">
-            <div class="card-header">
-                <h4>Informacje o Pogodzie</h4>
-            </div>
-            <div class="card-body">
-                <p><strong>Temperatura:</strong> {{ $weather->temperature }} °C</p>
-                <p><strong>Wilgotność:</strong> {{ $weather->humidity }}%</p>
-                <p><strong>Ciśnienie:</strong> {{ $weather->pressure }} hPa</p>
-                <p><strong>Prędkość wiatru:</strong> {{ $weather->wind_speed }} km/h</p>
-                <p><strong>Opis:</strong> {{ $weather->description }}</p>
-
-                @if ($historicalWeather)
-                    <hr>
-                    <h4>Dane Historyczne (w ciągu ostatnich 24 godzin)</h4>
-                    <p><strong>Temperatura:</strong> {{ $historicalWeather['main']['temp'] - 273.15 }} °C</p> <!-- Zamieniamy z Kelvinów na Celsjusze -->
-                    <p><strong>Wilgotność:</strong> {{ $historicalWeather['main']['humidity'] }}%</p>
-                    <p><strong>Ciśnienie:</strong> {{ $historicalWeather['main']['pressure'] }} hPa</p>
-                    <p><strong>Prędkość wiatru:</strong> {{ $historicalWeather['wind']['speed'] }} m/s</p>
-                    <p><strong>Opis:</strong> {{ $historicalWeather['weather'][0]['description'] }}</p>
-                @else
-                    <p>Brak danych historycznych dla tego miasta.</p>
-                @endif
-
-                <a href="{{ route('weather.index') }}" class="btn btn-secondary mt-3">Powrót do listy</a>
-            </div>
+        <div>
+            <h3>Aktualne dane:</h3>
+            <ul>
+                <li>Opis: {{ $currentWeather->description }}</li>
+                <li>Temperatura: {{ $currentWeather->temperature }} °C</li>
+                <li>Ciśnienie: {{ $currentWeather->pressure }} hPa</li>
+                <li>Wilgotność: {{ $currentWeather->humidity }}%</li>
+            </ul>
         </div>
+
+        <div class="mt-5 chart-container">
+            <h3>Temperatura</h3>
+            <canvas id="temperatureChart"></canvas>
+        </div>
+
+        <div class="mt-5 chart-container">
+            <h3>Ciśnienie</h3>
+            <canvas id="pressureChart"></canvas>
+        </div>
+
+        <div class="mt-5 chart-container">
+            <h3>Wilgotność</h3>
+            <canvas id="humidityChart"></canvas>
+        </div>
+
     </div>
+
+    @push('scripts')
+        <script>
+            const historyData = @json($history);
+
+            // Formatowanie daty - użyj moment.js (jeśli masz ją załadowaną)
+            const formatDate = (date) => {
+                const formattedDate = new Date(date);
+                return formattedDate.toLocaleString('pl-PL', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            };
+
+            console.log(historyData);
+
+            const labels = historyData.map(record => formatDate(record.recorded_at));  // Formatowana data
+            const temperatureData = historyData.map(record => record.temperature);
+            const pressureData = historyData.map(record => record.pressure);
+            const humidityData = historyData.map(record => record.humidity);
+
+            // Temperatura
+            const tempCtx = document.getElementById('temperatureChart').getContext('2d');
+            new Chart(tempCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Temperatura (°C)',
+                        data: temperatureData,
+                        borderColor: 'rgb(255, 99, 132)',
+                        fill: false,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'category',
+                            title: { display: true, text: 'Data' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Temperatura (°C)' }
+                        }
+                    }
+                }
+            });
+
+            // Ciśnienie
+            const pressureCtx = document.getElementById('pressureChart').getContext('2d');
+            new Chart(pressureCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ciśnienie (hPa)',
+                        data: pressureData,
+                        borderColor: 'rgb(54, 162, 235)',
+                        fill: false,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'category',
+                            title: { display: true, text: 'Data' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Ciśnienie (hPa)' }
+                        }
+                    }
+                }
+            });
+
+            // Wilgotność
+            const humidityCtx = document.getElementById('humidityChart').getContext('2d');
+            new Chart(humidityCtx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Wilgotność (%)',
+                        data: humidityData,
+                        borderColor: 'rgb(75, 192, 192)',
+                        fill: false,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'category',
+                            title: { display: true, text: 'Data' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Wilgotność (%)' }
+                        }
+                    }
+                }
+            });
+        </script>
+    @endpush
+    @push('styles')
+        <style>
+            /* Style dla wykresów */
+            #temperatureChart,
+            #pressureChart,
+            #humidityChart {
+                width: 100%; /* Ustawia wykresy na 100% szerokości kontenera */
+                max-width: 700px; /* Maksymalna szerokość wykresów */
+                height: 350px; /* Wysokość wykresów */
+                margin: 0 auto; /* Wyśrodkowanie wykresów */
+            }
+        </style>
+    @endpush
 @endsection
