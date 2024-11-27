@@ -15,7 +15,6 @@ class CityController extends Controller
         $this->weatherService = $weatherService;
     }
 
-    // 1. Wyświetl aktualną pogodę dla miast
     public function index()
     {
         $cities = City::all();
@@ -48,7 +47,6 @@ class CityController extends Controller
 
     public function updateSettings(Request $request)
     {
-        // Walidacja
         $validated = $request->validate([
             'cities' => 'required|array',
             'cities.*.name' => 'required|string',

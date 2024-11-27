@@ -41,9 +41,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="mt-4">
-                <p><strong>Ostatnia aktualizacja:</strong> {{$weather->updated_at->format('d-m-Y H:i')}}</p>
-            </div>
+
         @endif
     </div>
 @endsection

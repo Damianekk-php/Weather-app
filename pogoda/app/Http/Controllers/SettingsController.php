@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class SettingsController extends Controller
 {
@@ -41,6 +42,7 @@ class SettingsController extends Controller
 
         $setting->city_ids = $newCityIds;
         $setting->save();
+        Artisan::call('weather:fetch');
 
         return redirect()->route('settings.index')->with('success', 'Ustawienia zostały zapisane.');
     }
