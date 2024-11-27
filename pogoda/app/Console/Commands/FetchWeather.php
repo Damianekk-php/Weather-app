@@ -24,25 +24,19 @@ class FetchWeatherCommand extends Command
 
     public function handle()
     {
-        // Pobierz ustawienia i przypisz identyfikatory wybranych miast
         $setting = Setting::first();
         $cityIds = $setting ? $setting->city_ids : [];
 
-        // Jeśli nie ma wybranych miast, zakończ komendę
         if (empty($cityIds)) {
             $this->info('Brak wybranych miast do pobrania pogody.');
             return;
         }
 
-        // Pobierz miasta, które zostały zapisane w ustawieniach
         $cities = City::whereIn('id', $cityIds)->get();
 
-        // Przetwórz każde miasto i pobierz dane pogodowe
         foreach ($cities as $city) {
-            // Pobierz dane pogodowe z API
             $weatherData = $this->weatherService->getWeather($city->api_city_id);
 
-            // Zapisz lub zaktualizuj dane pogodowe w bazie
             \App\Models\Weather::updateOrCreate(
                 ['city_id' => $city->id],
                 [

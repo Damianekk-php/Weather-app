@@ -9,7 +9,6 @@ class WeatherHistory extends Model
 {
     use HasFactory;
 
-    // Nazwa tabeli, jeśli różni się od domyślnej (domyślna: weather_histories)
     protected $table = 'weather_history';
 
     protected $fillable = [

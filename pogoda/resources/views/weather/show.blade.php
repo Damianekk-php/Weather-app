@@ -35,7 +35,6 @@
         <script>
             const historyData = @json($history);
 
-            // Formatowanie daty - użyj moment.js (jeśli masz ją załadowaną)
             const formatDate = (date) => {
                 const formattedDate = new Date(date);
                 return formattedDate.toLocaleString('pl-PL', {
@@ -55,7 +54,6 @@
             const pressureData = historyData.map(record => record.pressure);
             const humidityData = historyData.map(record => record.humidity);
 
-            // Temperatura
             const tempCtx = document.getElementById('temperatureChart').getContext('2d');
             new Chart(tempCtx, {
                 type: 'line',
@@ -83,7 +81,6 @@
                 }
             });
 
-            // Ciśnienie
             const pressureCtx = document.getElementById('pressureChart').getContext('2d');
             new Chart(pressureCtx, {
                 type: 'line',
@@ -111,7 +108,6 @@
                 }
             });
 
-            // Wilgotność
             const humidityCtx = document.getElementById('humidityChart').getContext('2d');
             new Chart(humidityCtx, {
                 type: 'line',
@@ -142,14 +138,13 @@
     @endpush
     @push('styles')
         <style>
-            /* Style dla wykresów */
             #temperatureChart,
             #pressureChart,
             #humidityChart {
-                width: 100%; /* Ustawia wykresy na 100% szerokości kontenera */
-                max-width: 700px; /* Maksymalna szerokość wykresów */
-                height: 350px; /* Wysokość wykresów */
-                margin: 0 auto; /* Wyśrodkowanie wykresów */
+                width: 100%;
+                max-width: 700px;
+                height: 350px;
+                margin: 0 auto;
             }
         </style>
     @endpush
