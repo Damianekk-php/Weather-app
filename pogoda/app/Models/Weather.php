@@ -15,11 +15,11 @@ class Weather extends Model
      * @var array
      */
     protected $fillable = [
-        'city_id',         // ID miasta (powiązanie z tabelą City)
-        'description',     // Opis pogody (np. zachmurzenie umiarkowane)
-        'temperature',     // Temperatura
-        'pressure',        // Ciśnienie
-        'humidity',        // Wilgotność
-        'wind_speed',      // Prędkość wiatru
+        'city_id',
+        'description',
+        'temperature',
+        'pressure',
+        'humidity',
+        'wind_speed',
     ];
 }
