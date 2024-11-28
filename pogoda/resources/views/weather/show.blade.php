@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Szczegóły pogody dla: {{ $currentWeather->city_name }}</h1>
+        <a href="{{ route('weather.index') }}" class="btn btn-secondary btn-lg mt-3">Przejdź do Pogody</a>
 
         <div>
             <h3>Aktualne dane:</h3>
@@ -11,6 +12,8 @@
                 <li>Temperatura: {{ $currentWeather->temperature }} °C</li>
                 <li>Ciśnienie: {{ $currentWeather->pressure }} hPa</li>
                 <li>Wilgotność: {{ $currentWeather->humidity }}%</li>
+                <li>Szerokość geograficzna: {{ number_format($currentWeather->latitude, 2) }}</li>
+                <li>Długość geograficzna: {{ number_format($currentWeather->longitude, 2) }}</li>
             </ul>
         </div>
 
@@ -28,7 +31,6 @@
             <h3>Wilgotność</h3>
             <canvas id="humidityChart"></canvas>
         </div>
-
     </div>
 
     @push('scripts')

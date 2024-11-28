@@ -13,6 +13,8 @@ Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
 Route::get('/weather/{city_id}', [WeatherController::class, 'show'])->name('weather.show');
+Route::delete('/weather/{cityId}', [WeatherController::class, 'destroy'])->name('weather.delete');
+
 
 Auth::routes();
 

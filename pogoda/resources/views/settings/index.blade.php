@@ -17,10 +17,11 @@
                         <label for="cities">Wybierz miasta:</label>
                         <select name="city_ids[]" id="cities" class="form-control" multiple>
                             @foreach ($cities as $city)
-                                <option value="{{ $city->id }}"
-                                        @if (in_array($city->id, $cityIds)) selected @endif>
-                                    {{ $city->name }}
-                                </option>
+                                @if (!in_array($city->id, $cityIds))
+                                    <option value="{{ $city->id }}">
+                                        {{ $city->name }}
+                                    </option>
+                                @endif
                             @endforeach
                         </select>
                         <small class="form-text text-muted">Wybierz do 10 miast, z których chcesz pobierać dane pogodowe.</small>
@@ -28,6 +29,12 @@
 
                     <button type="submit" class="btn btn-primary btn-lg mt-3">Zapisz ustawienia</button>
                 </form>
+
+                @if (session('error'))
+                    <div class="alert alert-danger mt-3">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
                 @if (session('success'))
                     <div class="alert alert-success mt-3">

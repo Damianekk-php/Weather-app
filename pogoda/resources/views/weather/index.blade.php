@@ -11,37 +11,49 @@
                 Brak danych pogodowych. Proszę spróbować później.
             </div>
         @else
-            <div class="table-responsive mt-4">
-                <table class="table table-striped table-bordered">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Miasto</th>
-                        <th>Temperatura</th>
-                        <th>Wilgotność</th>
-                        <th>Akcja</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($weathers as $weather)
-                        <tr>
-                            <td>
-                                @if ($weather->city_name)
-                                    {{ $weather->city_name }}
-                                @else
-                                    <em>Brak miasta</em>
-                                @endif
-                            </td>
-                            <td>{{ $weather->temperature }} °C</td>
-                            <td>{{ $weather->humidity }}%</td>
-                            <td>
-                                <a href="{{ route('weather.show', $weather->city_id) }}" class="btn btn-info btn-sm">Szczegóły</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mt-4">
+                @php
+                    $weatherEmojis = [
+                        'Clear' => '☀️',
+                        'Clouds' => '☁️',
+                        'Rain' => '🌧️',
+                        'Drizzle' => '🌦️',
+                        'Thunderstorm' => '⛈️',
+                        'Snow' => '❄️',
+                        'Mist' => '🌫️',
+                        'Fog' => '🌁',
+                        'Haze' => '🌤️',
+                        'Dust' => '🌪️',
+                        'Sand' => '🌪️',
+                        'Ash' => '🌋',
+                        'Squall' => '💨',
+                        'Tornado' => '🌪️'
+                    ];
+                @endphp
 
+                @foreach ($weathers as $weather)
+                    <div class="col">
+                        <div class="card text-center shadow-sm" style="min-height: 250px; font-size: 1.1em;">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size: 1.4em;">{{ $weather->city_name ?? 'Nieznane miasto' }}</h5>
+                                <div class="weather-icon mb-3">
+                                    <span style="font-size: 2.5em;">
+                                        {{ $weatherEmojis[$weather->main] ?? '❓' }}
+                                    </span>
+                                </div>
+                                <p class="mb-2"><strong>Temperatura:</strong> {{ $weather->temperature }} °C</p>
+                                <p class="mb-3"><strong>Wilgotność:</strong> {{ $weather->humidity }}%</p>
+                                <a href="{{ route('weather.show', $weather->city_id) }}" class="btn btn-info btn-sm">Szczegóły</a>
+                                <form action="{{ route('weather.delete', $weather->city_id) }}" method="POST" class="d-inline-block" onsubmit="return confirm('Czy na pewno chcesz usunąć to miasto?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Usuń miasto</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         @endif
     </div>
 @endsection

@@ -16,10 +16,14 @@ class Weather extends Model
      */
     protected $fillable = [
         'city_id',
+        'city_name',
+        'latitude',
+        'longitude',
         'description',
+        'main',
         'temperature',
         'pressure',
         'humidity',
-        'wind_speed',
+
     ];
 }

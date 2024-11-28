@@ -40,10 +40,14 @@ class FetchWeatherCommand extends Command
             \App\Models\Weather::updateOrCreate(
                 ['city_id' => $city->id],
                 [
+                    'city_name' => $weatherData['name'] ?? 'Nieznane miasto',
+                    'latitude' => $weatherData['coord']['lat'] ?? null,
+                    'longitude' => $weatherData['coord']['lon'] ?? null,
                     'description' => $weatherData['weather'][0]['description'] ?? 'Brak danych',
                     'temperature' => $weatherData['main']['temp'] ?? null,
                     'pressure'    => $weatherData['main']['pressure'] ?? null,
                     'humidity'    => $weatherData['main']['humidity'] ?? null,
+                    'main'        => $weatherData['weather'][0]['main'] ?? null,
                 ]
             );
 
@@ -54,6 +58,7 @@ class FetchWeatherCommand extends Command
                 'humidity'    => $weatherData['main']['humidity'] ?? null,
                 'recorded_at' => now(),
             ]);
+            \Log::info('Weather data for city: ', $weatherData);
         }
 
         $this->info('Pogoda została pomyślnie pobrana dla wybranych miast.');

@@ -31,10 +31,44 @@ class WeatherController extends Controller
             ->orderBy('recorded_at', 'asc')
             ->get();
 
+
         if (!$currentWeather) {
             abort(404, 'Brak danych pogodowych dla tego miasta.');
         }
 
         return view('weather.show', compact('currentWeather', 'history'));
     }
+
+    public function destroy($cityId)
+    {
+        $setting = Setting::first();
+
+        if (!$setting) {
+            return redirect()->route('weather.index')->with('error', 'Brak ustawień.');
+        }
+
+        $cityIds = $setting->city_ids;
+
+        if (!in_array($cityId, $cityIds)) {
+            return redirect()->route('weather.index')->with('error', 'Miasto nie znajduje się w ustawieniach.');
+        }
+
+        $cityIds = array_filter($cityIds, function ($id) use ($cityId) {
+            return $id != $cityId;
+        });
+
+        $setting->city_ids = array_values($cityIds);
+        $setting->save();
+
+        WeatherHistory::where('city_id', $cityId)->delete();
+
+        return redirect()->route('weather.index')->with('success', 'Miasto zostało usunięte.');
+    }
+
+
+
+
+
+
+
 }
