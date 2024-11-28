@@ -49,7 +49,7 @@
 
             console.log(historyData);
 
-            const labels = historyData.map(record => formatDate(record.recorded_at));  // Formatowana data
+            const labels = historyData.map(record => formatDate(record.recorded_at));
             const temperatureData = historyData.map(record => record.temperature);
             const pressureData = historyData.map(record => record.pressure);
             const humidityData = historyData.map(record => record.humidity);
