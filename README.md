@@ -1,1 +1,2 @@
-test
+# Weather application
+An application that retrieves weather data via an API that saves the current weather and its history in a database. Module for displaying weather history for a given city and the ability to choose 10 cities for which we will track the weather
